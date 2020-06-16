@@ -9,21 +9,18 @@ export const routes = [
   {
     key: 'list',
     path: '/list',
-    exact: true,
     name: 'List',
     component: 'pages/list'
   },
   {
     key: 'detail',
-    path: '/detail',
-    exact: true,
+    path: '/detail/:id',
     name: 'Detail',
     component: 'pages/detail'
   },
   {
     key: 'tools',
     path: '/tools',
-    exact: true,
     name: 'Tools',
     component: 'pages/tools'
   }

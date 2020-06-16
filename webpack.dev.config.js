@@ -7,13 +7,51 @@ const path = require('path');
 // const smp = new SpeedMeasureWebpackPlugin();
 
 const devConfig = {
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   mode: 'development',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        include: path.resolve(__dirname, './node_modules/highlight.js/styles'),
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+          }
+        ],
+      },
+      {
+        test: /\.less$/,
+        include: path.resolve(__dirname, './src'),
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              modules: { auto: true },
+            },
+          },
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'less-loader',
+          },
+        ]
+      },
+    ],
+  },
   devServer: {
-    contentBase: './dist',
+    contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
     port: 8081,
     open: true,
