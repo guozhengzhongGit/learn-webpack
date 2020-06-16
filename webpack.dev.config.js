@@ -18,6 +18,7 @@ const devConfig = {
     port: 8081,
     open: true,
     stats: 'errors-warnings',
+    historyApiFallback: true,
   }
 }
 

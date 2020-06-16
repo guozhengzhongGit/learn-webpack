@@ -9,7 +9,7 @@ const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    index: './src/main.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

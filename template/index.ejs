@@ -4,6 +4,9 @@
   <%= require('raw-loader?esModule=false!./meta.html') %>
   <!-- <script><%= require('raw-loader?esModule=false!../src/utils/rem.js') %></script> -->
   <title>输出打包</title>
+  <style>
+    <%= require('raw-loader?esModule=false!../assets/reset.css') %>
+  </style>
 </head>
 <body>
   <div id="root"></div>
