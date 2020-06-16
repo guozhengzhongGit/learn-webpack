@@ -38,6 +38,7 @@ const prodConfig = {
     )],
   },
   plugins: prodPlugins,
+  stats: 'normal',
 }
 
 module.exports = smp.wrap(merge(baseConfig, prodConfig))

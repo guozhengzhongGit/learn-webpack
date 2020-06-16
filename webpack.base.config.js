@@ -13,6 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
+    chunkFilename: devMode ? '[name].bundle.js' : '[name]_[chunkhash:8].bundle.js',
     filename: devMode ? '[name].bundle.js' : '[name]_[chunkhash:8].bundle.js',
   },
   resolve: {
@@ -20,13 +21,15 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, './src'),
       assets: path.resolve(__dirname, './assets'),
+      components: path.resolve(__dirname, './src/components'),
+      pages: path.resolve(__dirname, './src/pages'),
     },
     extensions: ['.js', '.jsx', '.json']
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js(x?)$/,
         include: path.resolve(__dirname, './src'),
         use: [
           {
