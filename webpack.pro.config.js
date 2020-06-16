@@ -6,13 +6,24 @@ const TerserPlugin = require('terser-webpack-plugin');
 
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const smp = new SpeedMeasureWebpackPlugin();
+const isAnalyzer = process.env.analyzer === 'true';
+
+const plugins = [
+  new OptimizeCssAssetsPlugin({
+    assetNameRegExp: /\.css$/g,
+    cssProcessor: require('cssnano')
+  }),
+]
+
+const prodPlugins = isAnalyzer ? [new BundleAnalyzerPlugin(), ...plugins] : plugins
+
 const prodConfig = {
   mode: 'production',
   optimization: {
     splitChunks: {
       cacheGroups: {
         commons: {
-          test: /(react|react-dom|lodash)/,
+          test: /(react|react-dom|react-router|lodash)/,
           name: 'vendors',
           chunks: 'all',
         }
@@ -26,13 +37,7 @@ const prodConfig = {
       }
     )],
   },
-  plugins: [
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano')
-    }),
-    new BundleAnalyzerPlugin()
-  ]
+  plugins: prodPlugins,
 }
 
 module.exports = smp.wrap(merge(baseConfig, prodConfig))
