@@ -4,13 +4,14 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   entry: {
     index: './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name]_[chunkhash:8].bundle.js',
+    filename: devMode ? '[name].bundle.js' : '[name]_[chunkhash:8].bundle.js',
   },
   module: {
     rules: [

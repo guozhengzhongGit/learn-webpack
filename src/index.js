@@ -14,6 +14,7 @@ class Index extends PureComponent {
       <h1 className="title">{add(1, 1)}</h1>
       <h1>{toCamelCase('hello-world')}</h1>
       <span>update</span>
+      <p>{process.env.NODE_ENV}</p>
     </div>
   )
   }
