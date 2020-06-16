@@ -3,8 +3,10 @@
 <head>
   <%= require('raw-loader?esModule=false!./meta.html') %>
   <!-- <script><%= require('raw-loader?esModule=false!../src/utils/rem.js') %></script> -->
+   <style>
+    <%= require('raw-loader?esModule=false!../assets/highlight.css') %>
+  </style>
   <title>输出打包</title>
-  <link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/styles/default.min.css">
   <script src="//cdn.bootcdn.net/ajax/libs/highlight.js/10.1.0/highlight.min.js"></script>
   <!-- <style>
     <%= require('raw-loader?esModule=false!../assets/reset.css') %>
